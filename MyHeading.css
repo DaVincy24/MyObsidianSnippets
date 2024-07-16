@@ -1,0 +1,145 @@
+/* ====== title style ====== */
+body {
+    /* Headings */
+    --heading-formatting: var(--text-faint);
+    --h1-color: inherit;
+    --h2-color: inherit;
+    --h3-color: inherit;
+    --h1-indicator-color: var(--color-red);
+    --h2-indicator-color: var(--color-orange);
+    --h3-indicator-color: var(--color-yellow);
+    --h1-font: inherit;
+    --h2-font: inherit;
+    --h3-font: inherit;
+	
+	--inline-title-size: var(--h1-size);
+    --h1-size: 1.802em;
+    --h2-size: 1.602em;
+    --h3-size: 1.424em;
+    --h4-size: 1.266em;
+    --h5-size: 1.125em;
+    --h6-size: 1em;
+	/*
+    --h1-size: 1.5em;
+    --h2-size: 1.425em;
+    --h3-size: 1.35em;
+	 */
+    --h1-style: normal;
+    --h2-style: normal;
+    --h3-style: normal;
+    --h1-variant: normal;
+    --h2-variant: normal;
+    --h3-variant: normal;
+    --h1-weight: 600;
+    --h2-weight: 600;
+    --h3-weight: 600;
+	    /* Accent HSL values */
+    --accent-h: 232;
+    --accent-s: 80%;
+    --accent-l: 64%;
+}
+ 
+.theme-dark {
+  /*  --h2-color: #a9b8e8;
+    --h3-color: #a9b8e8;*/
+}
+
+.theme-light {
+	/*
+  --h1-color: var(--text-accent);
+  --h2-color: hsla(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 10%));
+  --h3-color: hsla(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 15%));
+  --h4-color: hsla(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 20%));
+  --h5-color: hsla(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 25%));
+  --h6-color: hsla(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 30%));
+  */
+}
+
+.HyperMD-header, :is(h1, h2, h3, h4, h5, h6) {
+    --link-color: currentColor;
+    --link-external-color: currentColor;
+	--link-external-color-hover: currentColor;
+    --link-unresolved-color: currentColor;
+    --link-unresolved-decoration-color: currentColor;
+}
+
+
+.markdown-preview-view h1:first-child:before {
+  content: "";
+  display: inline-block; /* Change to inline-block for vertical line */
+  width: 3px; /* Adjust width for vertical line thickness */
+  height: calc(1.2em - 8px); /* Adjust height for desired line length */
+  background-color: var(--h1-indicator-color); /* or your desired color */
+  margin-right: 5px; /* Adjust right margin for spacing */
+}
+
+.markdown-preview-view h2:first-child:before {
+  content: "";
+  display: inline-block; /* Change to inline-block for vertical line */
+  width: 3px; /* Adjust width(grossura) for vertical line thickness */
+  height: calc(1.2em - 8px); /* Adjust height for desired line length */
+  background-color: var(--h2-indicator-color); /* or your desired color */
+  margin-right: 5px; /* Adjust right margin for spacing */
+}
+
+.markdown-preview-view h3:first-child:before {
+  content: "";
+  display: inline-block; /* Change to inline-block for vertical line */
+  width: 3px; /* Adjust width for vertical line thickness */
+  height: calc(1.2em - 8px); /* Adjust height for desired line length */
+  background-color: var(--h3-indicator-color); /* or your desired color */
+  margin-right: 5px; /* Adjust right margin for spacing */
+}
+
+
+h2 {
+  margin-top: 0.75em !important;
+  margin-bottom: 0em !important;
+} 
+
+/* review code below, what is doing??*/
+.cm-line:has(> .cm-html-embed > span.underline-next-heading) + .HyperMD-header,
+.cm-line:has(> .cm-html-embed > span.underline-next-heading) + * + .HyperMD-header,
+div:not([class]):has(> p > span.underline-next-heading) + div:has(> :is(h1,h2,h3,h4,h5,h6)) > * {
+    text-decoration: underline;
+}
+
+
+
+/* ---
+Add a horizontal line to right side
+inspired from:https://forum.obsidian.md/t/meta-post-common-css-hacks/1978/288
+BEGIN
+
+
+:is(h1,h2,h3,h4,h5,h6) {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+:is(h1,h2,h3,h4,h5,h6):after{
+    content: '';
+    background: linear-gradient(to left, var(--h1-indicator-color), var(--h2-indicator-color) 55%, transparent 90%);
+    height: .1em;
+    margin: .3em;
+    flex: 1;
+}
+
+END
+--- */
+
+
+@media print {
+    .print > .markdown-rendered h1 {
+        border-bottom: 2px solid red;
+        padding-bottom: 0.4em;
+        margin-block-end: 0.6em; 
+    } 
+	
+	   .print > .markdown-rendered h2 {
+        border-bottom: 2px solid orange;
+        padding-bottom: 0.4em;
+        margin-block-end: 0.6em; 
+    } 
+}
